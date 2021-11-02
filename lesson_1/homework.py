@@ -4,15 +4,17 @@
 Программно попробуйте удалить все дела за выбранную дату.
 """
 
+# пример переменной с датой
 date_template = '01-01-2021'
 
+# пример переменной с "делом"
 deal_template = {
     "description": "call to mom",
     "severity": "high",
     "labor_intensity": 3
 }
 
-
+# пример структуры для нашего ежедневника
 notebook = {
     '01-01-2021': [
         {
@@ -71,13 +73,13 @@ notebook = {
 print(notebook)
 
 # вывести список дел за 01-01-2021
-print(notebook['01-01-2021'])
+# print(notebook['01-01-2021'])
 
 # вывести первое дело в списке за 01-01-2021
-print(notebook['01-01-2021'][0])
+# print(notebook['01-01-2021'][0])
 
 # вывести описание первого дела в списке за 01-01-2021
-print(notebook['01-01-2021'][0]['description'])
+# print(notebook['01-01-2021'][0]['description'])
 
 new_date = '03-08-2021'
 new_deal = {
@@ -91,10 +93,10 @@ deal_list = [
 ]
 
 # привязываем список с делами по ключу даты
-notebook[new_date] = deal_list
+# notebook[new_date] = deal_list
 
 # вывести список дел за 03-08-2021
-print(notebook['03-08-2021'])
+# print(notebook['03-08-2021'])
 
 # добавляем ещё пару дел
 new_deal_2 = {
@@ -110,20 +112,20 @@ new_deal_3 = {
              }
 
 # добавляем ещё два дела за 03-08-2021
-notebook[new_date].append(new_deal_2)
-notebook[new_date].append(new_deal_3)
+# notebook[new_date].append(new_deal_2)
+# notebook[new_date].append(new_deal_3)
 
 # вывести список дел за 03-08-2021
-print(notebook['03-08-2021'])
+# print(notebook['03-08-2021'])
 
 # удаляем дело
-notebook[new_date].pop(0)
+# notebook[new_date].pop(0)
 
 # вывести список дел за 03-08-2021
-print(notebook['03-08-2021'])
+# print(notebook['03-08-2021'])
 
 # удалить все дела за выбранную дату
-notebook.pop('03-08-2021')
+# notebook.pop('03-08-2021')
 
 # вывести список дел за 03-08-2021
-print(notebook)
+# print(notebook)
