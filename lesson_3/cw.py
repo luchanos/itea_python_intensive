@@ -30,9 +30,26 @@
 # except (ZeroDivisionError, KeyError) as err:  # перехватываем определённые типы исключений
 #     print("Возникла ошибка!", type(err), err)
 
-def divisor(a, b):
-    return a / b
 
+# очень простая функция, которая возвращает результат деления числа a на число b
+# def divisor(a, b):
+#     return a / b
+#
+#
+# first_num = 1
+# second_num = 2
+#
+# # позиционные аргументы
+# divisor(1, 2)
+#
+# # передача аргументов по ключу
+# divisor(b=2, a=1)
+#
+# # почему информация не выводится?? потому что результат возвращается для последующей работы, но мы не сказали печатать
+# # его на экран:
+# print(divisor(1, 2))
+
+# отрефакторим наш код из прошлого урока
 # объявляем пустой словарь
 all_products = {}
 answer = ""
@@ -42,7 +59,7 @@ def get_data_from_user(enter_info_msg, err_info_msg):
     """Функция для запроса информации у пользователя"""
     while True:
         some_data = input(enter_info_msg)
-        if product_id in all_products:
+        if some_data == "":
             print(err_info_msg)
             continue
         return some_data
@@ -61,8 +78,8 @@ while True:
             print(all_products[product_id])
         except KeyError as err:
             print("Ошибка! Продукта с таким идентификатором нет!", type(err), err)
-    else:
 
+    elif answer == "add":
         # получаем id нового продукта
         while True:
             product_id = input("Введите id нового продукта: ")
