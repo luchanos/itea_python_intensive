@@ -45,10 +45,14 @@ d_1 = {
 
 # настоящие программисты предпочитают json
 # выгружаем данные из Python в json
-with open("my_shiny_json.json", "w") as json_file:
-    json.dump(d_1, json_file)
+# with open("my_shiny_json.json", "w") as json_file:
+#     json.dump(d_1, json_file)
 
 # загружаем данные в Python из json
-with open("my_shiny_json.json", "r") as json_file:
-    d = json.load(json_file)
-    print(type(d), d)
+# with open("my_shiny_json.json", "r") as json_file:
+#     d = json.load(json_file)
+#     print(type(d), d)
+
+with open("my_tasks.json", "r") as my_json:
+    some_dict = json.load(my_json)
+    print(some_dict)

@@ -5,10 +5,9 @@
 проведите рефакторинг кода и разбейте логически обособленные участки кода на функции и
 предусмотрите обработку возможных возникающих исключений.
 """
+import json
 
 print("Вас приветствует программа органайзер!")
-
-notebook = {}
 
 
 def add_deal(notebook):
@@ -53,10 +52,15 @@ def show_all_deals_in_notebook(notebook):
         print()  # добавление пустой строки в вывод консоли
 
 
+# прогружаем дела из json-файла
+with open("my_tasks.json", "r") as tasks_json:
+    notebook = json.load(tasks_json)
+
 while True:
     answer = input("Добавить новое дело [add]\n"
                    "Удалить все дела за определённую дату [delete_all]:\n"
                    "Удалить определённое дело за определённую дату [delete_one]:\n"
+                   "Вывести все дела на экран [show_all]:\n"
                    "Завершить работу программы [stop]: ")
 
     if answer == "add":
@@ -71,12 +75,18 @@ while True:
             delete_deal_by_date(notebook)
         except KeyError as err:
             print("Ошибка! Вы ввели некорректную дату!", type(err), err)
+    elif answer == "show_all":
+        show_all_deals_in_notebook(notebook)
 
     # завершение работы программы
     elif answer == "stop":
         print("Программа завершает работу...")
         break
 
-    show_all_deals_in_notebook(notebook)
+    with open("my_tasks.json", "w", encoding="utf-8") as tasks_json:
+        json.dump(notebook, tasks_json, indent=4, ensure_ascii=False)
+
+    if answer != "show_all":
+        show_all_deals_in_notebook(notebook)
 
 print("Программа завершила свою работу!")
