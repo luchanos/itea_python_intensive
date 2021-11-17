@@ -14,6 +14,15 @@ TOKEN = "2104221180:AAHg1uLK1NT5mN20Pas9FCiDjTprHH0Qua8"
 bot = TeleBot(TOKEN)
 
 
+def some_other_func(message):
+    bot.reply_to(message, text="Сообщение из функции some_other_func")
+
+
+@bot.message_handler(commands=["test"])
+def some_func(message):
+    bot.reply_to(message, text="Сообщение из функции some_func")
+
+
 @bot.message_handler(commands=["get_by_id"])
 def get_by_id(message):
     with open("my_shiny_json.json", "r") as json_file:
